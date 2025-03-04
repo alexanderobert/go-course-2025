@@ -25,10 +25,10 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.New()
 
-	// r.Use(gin.Logger())
-	// r.Use(gin.Recovery())
+	//r.Use(gin.Logger())
+	//r.Use(gin.Recovery())
 
-	// r.Use(CustomMW)
+	//r.Use(CustomMW)
 
 	r.GET("/users/:id", GetUser)
 

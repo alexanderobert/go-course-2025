@@ -42,15 +42,15 @@ var storage = Storage{
 	mx: &sync.RWMutex{},
 	data: map[string]*User{
 		"0": {
-			Name:     "Groot",
+			Name:     "Hello",
 			Password: "qwe123",
-			Info:     "I am Groot",
+			Info:     "Hello world",
 		},
 	},
 }
 
 func main() {
-	// gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.DebugMode)
 	r := gin.Default()
 
 	r.NoRoute(func(c *gin.Context) {
