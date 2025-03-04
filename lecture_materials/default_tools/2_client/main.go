@@ -8,14 +8,24 @@ import (
 )
 
 func main() {
-	// ctx := context.WithTimeout(context.Background(), 5*time.Second)
 	// NewRequestWithContext
+	//ctx, _ := context.WithTimeout(context.Background(), 5*time.Second)
 	req, err := http.NewRequest(http.MethodPost, "http://google.com/robots.txt", nil)
 	if err != nil {
 		panic(err)
 	}
 
-	c := http.Client{Timeout: 10 * time.Second}
+	// transport := &http.Transport{
+	// 	DialContext: (&net.Dialer{
+	// 		Timeout: 5 * time.Second, // Тайм-аут подключения
+	// 	}).DialContext,
+	// 	TLSHandshakeTimeout:   3 * time.Second, // Тайм-аут для TLS Handshake
+	// 	ResponseHeaderTimeout: 2 * time.Second,
+	// }
+
+	c := http.Client{
+		Timeout: 10 * time.Second, // Общий тайм-аут
+	}
 
 	resp, err := c.Do(req)
 	if err != nil {

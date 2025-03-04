@@ -35,7 +35,9 @@ func main() {
 	}
 	fmt.Printf("request:\n%s\n\n", b)
 
-	c := &http.Client{}
+	c := &http.Client{
+		Timeout: 10 * time.Second,
+	}
 
 	resp, err := c.Do(req)
 	if err != nil {
