@@ -43,13 +43,15 @@ func handleUsers(w http.ResponseWriter, r *http.Request) {
 //	@license.name	Apache 2.0
 //	@license.url	http://www.apache.org/licenses/LICENSE-2.0.html
 
-// @host		petstore.swagger.io
+// @host		localhost
 // @BasePath	/api/v1
 func main() {
 	http.HandleFunc("/docs/", swagger.WrapHandler)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		_, _ = w.Write([]byte("hello, " + r.Header.Get("User-Agent") + ", with url " + r.URL.String()))
 	})
+
+	http.HandleFunc("/user/{id}", handleUsers)
 
 	log.Println("server starts")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
